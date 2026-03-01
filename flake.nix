@@ -3,12 +3,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    nur.url = "github:nix-community/NUR";
+    flake-utils.url = "github:numtide/flake-utils";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = { self, nixpkgs, nur, ... } @ inputs:
   let
     x86_64-linux = "x86_64-linux";
-   
     username = "mbk";
     mkPkgs = system:
       import nixpkgs {
@@ -30,7 +33,10 @@
         inputs = inputs; 
         pkgs-stable = mkPkgs x86_64-linux;
       };
-      modules = [ ./configuration.nix ];
+      modules = [ 
+        nur.modules.nixos.default
+        ./configuration.nix 
+      ];
     };
   };
 }

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 {
   imports =
@@ -115,6 +115,9 @@
     git
     brave
     mullvad-vpn
+    element
+    element-desktop
+    proton-pass
     _1password-gui
     _1password-cli  # CLI version for better system integration
     # Authentication and Security
@@ -139,6 +142,7 @@
     discord
     docker
     mujoco
+    pkgs.nur.repos.Ev357.helium
     spotify
     # Shell Utilities
     zoxide
