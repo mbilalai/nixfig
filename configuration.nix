@@ -98,6 +98,7 @@
     neovim
     vim
     helix
+    evil-helix
     zed-editor
     claude-code
     opencode
