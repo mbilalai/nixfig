@@ -113,7 +113,6 @@
     # Browsers and Utils
     wget
     git
-    brave
     mullvad-vpn
     element
     element-desktop
