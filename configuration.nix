@@ -142,6 +142,7 @@
     docker
     mujoco
     pkgs.nur.repos.Ev357.helium
+    brave
     spotify
     # Shell Utilities
     zoxide
