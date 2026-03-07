@@ -97,7 +97,6 @@
 
     neovim
     vim
-    helix
     evil-helix
     zed-editor
     claude-code
@@ -141,6 +140,7 @@
     openssh
     discord
     docker
+    kicad
     mujoco
     pkgs.nur.repos.Ev357.helium
     brave
