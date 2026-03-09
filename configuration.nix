@@ -96,6 +96,7 @@
   environment.systemPackages = with pkgs; [
 
     neovim
+    tree-sitter
     vim
     evil-helix
     zed-editor
