@@ -188,6 +188,7 @@
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
+  environment.variables.BROWSER = "helium";
 
   nix.gc = {
 	automatic = true;
