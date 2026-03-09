@@ -107,6 +107,18 @@
     rustc
     rustfmt
     clippy
+
+    pyright
+    black
+ 
+    clang
+    clang-tools
+    gdb
+    
+    ripgrep
+    fd
+    nodejs
+
     # Language Servers and Tools
     nil # Nix LSP
     taplo # TOML LSP
@@ -167,6 +179,9 @@
     uv      # Fast Python package installer and resolver
     ruff    # Fast Python linter and formatter
     ty 
+
+    nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
    ];
 
   xdg.portal.enable = true;
