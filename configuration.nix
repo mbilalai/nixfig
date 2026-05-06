@@ -59,13 +59,14 @@
   # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-   users.users.mbk = {
-     isNormalUser = true;
-     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-     packages = with pkgs; [
-       tree
-     ];
-   };
+  users.users.mbk = {
+    isNormalUser = true;
+    shell = pkgs.bash;
+    extraGroups = [ "wheel" ];
+    packages = with pkgs; [
+      tree
+    ];
+  };
 
   programs.firefox.enable = true;
 
@@ -80,7 +81,7 @@
 
   virtualisation.virtualbox.host.enable = true;
   users.groups.vboxusers.members = [ "mbk" ];
-  services.mullvad-vpn.enable = true;
+  #services.mullvad-vpn.enable = true;
   services.dbus.enable = true;
  
   services.gnome.gnome-keyring.enable = true;
@@ -127,6 +128,10 @@
     wget
     git
     mullvad-vpn
+    tailscale
+    trayscale
+    eigenwallet
+    rustdesk
     element
     element-desktop
     proton-pass
@@ -138,6 +143,7 @@
     # SSL/TLS Support
     cacert
     openssl
+    veracrypt
     # Terminals
     kitty
     alacritty
@@ -207,13 +213,21 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
 
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PermitRootLogin = "yes";
+      PasswordAuthentication = true;
+    };
+  };
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+  networking.firewall.checkReversePath = "loose";
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
