@@ -12,6 +12,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [ "docker-28.5.2" ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -116,6 +117,7 @@
     clang
     clang-tools
     gdb
+    emacs30-pgtk
     
     ripgrep
     fd
