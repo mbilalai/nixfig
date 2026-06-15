@@ -55,13 +55,14 @@
   # };
 
   # Enable the X11 windowing system.
+  # services.xserver.enable = true;
 
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
-  #services.printing.enable = true;
+  # services.printing.enable = true;
 
   # Enable sound.
   # services.pulseaudio.enable = true;
@@ -86,15 +87,15 @@ services.printing = {
     cups-browsed
   ];
 };
+
+
   # Enable touchpad support (enabled default in most desktopManager).
- services.libinput.enable = true;
+  # services.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  programs.fish.enable = true;
-
   users.users.mbk = {
     isNormalUser = true;
-    shell = pkgs.fish;
+    shell = pkgs.bash;
     extraGroups = [ "wheel" ];
     packages = with pkgs; [
       tree
@@ -102,23 +103,29 @@ services.printing = {
   };
 
   programs.firefox.enable = true;
-  #programs.niri.enable = true;
 
  # programs.hyprland.enable = true;
 
   hardware.bluetooth.enable = true;
   
-  services.displayManager.cosmic-greeter.enable = true;
-  services.desktopManager.cosmic.enable = true;
-  services.tailscale.enable = true;
+  # services.displayManager.cosmic-greeter.enable = true;
+  # services.desktopManager.cosmic.enable = true;
+
   services.xserver.enable = true;
-  #services.displayManager.gdm.enable = true;
+  services.desktopManager.gnome.enable = true;
+  services.displayManager.gdm.enable = true;
+  services.displayManager.defaultSession = "gnome";
+  
+
+  services.tailscale.enable = true;
 
   virtualisation.virtualbox.host.enable = true;
   users.groups.vboxusers.members = [ "mbk" ];
   #services.mullvad-vpn.enable = true;
   services.dbus.enable = true;
  
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true; 
 
   security.polkit.enable = true;
 
@@ -132,7 +139,7 @@ services.printing = {
     neovim
     tree-sitter
     vim
-    helix
+    evil-helix
     zed-editor
     claude-code
     opencode
@@ -165,6 +172,7 @@ services.printing = {
     tailscale
     trayscale
     eigenwallet
+    rustdesk
     element
     element-desktop
     proton-pass
@@ -199,7 +207,7 @@ services.printing = {
     spotify
     # Shell Utilities
     zoxide
-    fastfetch
+    neofetch
     fish
     nushell
     yazi
@@ -293,7 +301,7 @@ services.printing = {
   # and migrated your data accordingly.
   #
   # For more information, see `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system.stateVersion = "26.05"; # Did you read the comment?
+  system.stateVersion = "25.11"; # Did you read the comment?
 
 }
 
